@@ -1,5 +1,9 @@
 #
 # dockerfile for python-neodymium.
+# Build using the command:
+#
+# $ docker build . -t 'python-neodymium'
+#
 # Author: Kent Carrier | @embite | kentbo0528@gmail.com
 #
 
