@@ -92,6 +92,9 @@ async def on_member_join(member: discord.Member):
 @bot.event
 async def on_raw_reaction_add(payload: discord.RawReactionActionEvent):
 
+    if payload.event_type != "REACTION_ADD":
+        return
+
     print(f"Caught reaction {repr(payload.emoji)} on message {repr(payload.message_id)}")
 
     # Determine if this was a reaction on the rules message or the role message
@@ -100,15 +103,13 @@ async def on_raw_reaction_add(payload: discord.RawReactionActionEvent):
     roles_message = roles_messages[guild_id]
 
     if payload.message_id == rules_message:
-        if payload.event_type != "REACTION_ADD" or payload.emoji.name != RULES_ACKNOWLEDGE_EMOJI:
+        if payload.emoji.name != RULES_ACKNOWLEDGE_EMOJI:
             return
         
         member = payload.member
         await member.add_roles(member.guild.roles[1])
 
     elif payload.message_id == roles_message:
-        if payload.event_type != "REACTION_ADD":
-            return
         
         member = payload.member
         reaction = payload.emoji
