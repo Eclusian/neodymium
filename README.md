@@ -13,7 +13,7 @@ DISCORD_TOKEN="Your bot's token here"
 Then you can either run the bot using a Python instance or you can build
 a Docker image using
 
-`$ docker built . -t 'python-neodymium'`
+`$ docker build . -t "python-neodymium"`
 
 which you can then run in the background with
 
