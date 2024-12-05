@@ -122,6 +122,7 @@ async def on_raw_reaction_add(payload: discord.RawReactionActionEvent):
 ####################
 
 @bot.command()
+@commands.has_permission(administrator=True)
 async def set_rules(context: commands.Context):
     """
     Set the rules message for a particular guild.
@@ -140,6 +141,7 @@ async def set_rules(context: commands.Context):
 
 
 @bot.command()
+@commands.has_permissions(administrator=True)
 async def del_rules(context: commands.Context):
     guild_id = context.guild.id
 
