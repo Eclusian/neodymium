@@ -80,12 +80,16 @@ def read_config_file(filename, variable_dict: dict):
         key2 value2
         key3 value3
 
+    Ill-formatted lines may or may not be ignored.
+
     NOTE: Only adds or replaces entries to the dictionary. No elements are
     removed if already present (unless overwritten).
     """
     with open(filename, 'r') as file:
         for line in file:
             line = line.split()
+            if len(line) < 2:
+                continue
             key = line[0]
             value = line[1]
             variable_dict[key] = value
