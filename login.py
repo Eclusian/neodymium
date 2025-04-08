@@ -80,8 +80,8 @@ def read_config_file(filename, variable_dict: dict):
         key2 value2
         key3 value3
 
-    NOTE: Only adds entries to the dictionary. No elements are removed if
-    already present (unless overwritten).
+    NOTE: Only adds or replaces entries to the dictionary. No elements are
+    removed if already present (unless overwritten).
     """
     with open(filename, 'r') as file:
         for line in file:
